@@ -1,0 +1,96 @@
+/* Updated DashboardMainContent.css for proper layout alignment */
+
+.dashboard-main {
+  flex: 1;
+  padding: 25px;
+  background-color: white;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  gap: 2px;
+  
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px; 
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-areas: 
+    "anatomy health-cards calendar"
+    "anatomy health-cards calendar"
+    "activity activity calendar";
+}
+
+.dashboard-anatomy {
+  grid-area: anatomy;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-health-cards {
+  grid-area: health-cards;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-calendar {
+  grid-area: calendar;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+.dashboard-activity {
+  grid-area: activity;
+  margin-top: 45vh;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "anatomy health-cards"
+      "activity activity"
+      "calendar calendar";
+  }
+  
+  .dashboard-calendar {
+    flex-direction: row;
+    gap: 16px;
+    min-height: auto;
+  }
+  
+  .dashboard-calendar > * {
+    flex: 1;
+  }
+}
+
+@media (max-width: 770px) {
+  .dashboard-main {
+    padding: 16px;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "anatomy"
+      "health-cards"
+      "activity" 
+      "calendar";
+    gap: 16px;
+  }
+  
+  .dashboard-calendar {
+    flex-direction: column;
+  }
+  
+  .dashboard-activity {
+    margin-top: 100px;
+  }
+}
